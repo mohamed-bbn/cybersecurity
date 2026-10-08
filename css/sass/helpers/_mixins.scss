@@ -260,7 +260,7 @@
     }
     &:before {
         @include overlay;
-        background: linear-gradient(to left, #0d264800, #0d26484d);
+        background: linear-gradient(to left, #0d264800, #0d2648);
         z-index: 1;
         @media (max-width: 999px) {
             background: linear-gradient(to bottom, #0d264800, #0d2648);

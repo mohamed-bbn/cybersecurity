@@ -36,9 +36,8 @@
     background: $dark url(../images/background.png) no-repeat fixed center center/cover;
     padding-top: $com-spacing-7;
     .rowbox {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
         gap: $com-spacing-6;
         @media (max-width: 999px) {
             display: block;
@@ -51,25 +50,24 @@
         img {
             max-width: 100px;
             @media (max-width: 999px) {
-                max-width: 160px;
+                max-width: 140px;
             }
         }
     }
     .social {
+        justify-content: end;
         @media (max-width: 999px) {
             justify-content: center;
             margin-top: $com-spacing-6;
         }
     }
     .navmenu {
-        display: flex;
-        align-items: center;
-        gap: $com-spacing-8;
+        @include flex;
+        gap: $com-spacing-6;
         @media (max-width: 999px) {
             justify-content: center;
             flex-wrap: wrap;
             margin-top: $com-spacing-6;
-            gap: $com-spacing-4;
         }
         a {
             @include hyprlink;
@@ -82,12 +80,12 @@
         @include flex;
         width: $fullwidth;
         padding: $com-spacing-4 $zero;
-        border-top: 1px solid #ffffff14;
+        border-top: 1px solid #ffffff57;
         margin-top: $com-spacing-7;
         p {
             display: flex;
             align-items: center;
-            color: $white;
+            color: #c9c9c9;
             font-size: 14px;
             @media (max-width: 999px) {}
         }

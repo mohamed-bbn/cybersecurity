@@ -181,8 +181,8 @@
             &::after {
                 content: "";
                 position: absolute;
-                left: -16px;
-                top: 14px;
+                left: $zero;
+                bottom: -4px;
                 width: $zero;
                 height: 3px;
                 background: $red;
@@ -224,18 +224,18 @@
         }
         .activelink {
             .menu-link {
-                color: $red;
+                // color: $red;
                 &::after {
-                    width: 12px;
+                    width: 60%;
                 }
             }
         }
         .activelink,
         .menu-item:hover {
             .menu-link {
-                color: $red;
+                // color: $red;
                 &::after {
-                    width: 12px;
+                    width: 60%;
                 }
             }
         }

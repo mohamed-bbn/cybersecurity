@@ -662,7 +662,7 @@
 }
 
 .values-section {
-    background: #1a33530a;
+    background: #f5f5ff;
     .target-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -678,7 +678,7 @@
             border: 1px solid #E2E8F0;
             border-radius: 16px;
             padding: $com-spacing-7;
-            box-shadow: 0px 4px 12px 0px #00000004;
+            box-shadow: 0px 0px 5px #00000014;
             @media (max-width: 999px) {
                 padding: $com-spacing-6;
             }
@@ -806,7 +806,7 @@
             border: 1px solid #E2E8F0;
             border-radius: 16px;
             padding: $com-spacing-7;
-            box-shadow: 0px 4px 12px 0px #00000004;
+            box-shadow: 0px 0px 5px #00000000;
             @media (max-width: 999px) {
                 padding: $com-spacing-6;
             }
@@ -854,7 +854,7 @@
         @media (max-width: 767px) {}
     }
     .item {
-        background: $dark;
+        background: $red;
         padding: $com-spacing-8;
         @media (max-width: 999px) {
             padding: $com-spacing-6;
@@ -1052,7 +1052,7 @@
         background: $white;
         border-radius: 16px;
         border: 1px solid #E2E8F0;
-        box-shadow: 0px 4px 12px 0px #00000004;
+        box-shadow: 0px 0px 5px #00000014;
         padding: $com-spacing-7;
         @media (max-width: 999px) {
             max-width: $fullwidth;
@@ -1654,7 +1654,7 @@
             border: 1px solid #E2E8F0;
             padding: $com-spacing-6;
             border-radius: 8px;
-            box-shadow: 0px 4px 12px 0px #00000004;
+            box-shadow: 0px 0px 5px #00000014;
             @media (max-width: 999px) {
                 padding: $com-spacing-6;
             }
@@ -1692,6 +1692,7 @@
 }
 
 .site-workforce {
+    background: none;
     .target-grid {
         grid-template-columns: repeat(2, 1fr);
         @media (max-width: 999px) {
@@ -1736,7 +1737,7 @@
             border: 1px solid #E2E8F0;
             padding: $com-spacing-6;
             border-radius: 8px;
-            box-shadow: 0px 4px 12px 0px #00000004;
+            box-shadow: 0px 0px 5px #00000014;
             @media (max-width: 999px) {
                 padding: $com-spacing-6;
             }
@@ -1764,6 +1765,10 @@
             }
         }
     }
+}
+
+.site-approach {
+    background: #f5f5ff;
 }
 
 .site-solutions {
@@ -1902,7 +1907,7 @@
             border: 1px solid #E2E8F0;
             border-radius: 16px;
             padding: $com-spacing-7;
-            box-shadow: 0px 4px 12px 0px #00000004;
+            box-shadow: 0px 0px 5px #00000014;
             @media (max-width: 999px) {
                 padding: $com-spacing-6;
             }
@@ -2316,14 +2321,20 @@
         }
     }
     .item {
+        box-shadow: 0px 0px 5px #00000014;
         padding: $com-spacing-5;
         background: $white;
         border-radius: 16px;
+        @include transition(all 0.5s ease-in-out 0s);
         @media (max-width: 1199px) {}
         @media (max-width: 999px) {
             padding-top: $com-spacing-6;
         }
+        &:hover {
+            box-shadow: 0px 0px 15px #00000021;
+        }
         .photo {
+            display: block;
             position: relative;
             width: $fullwidth;
             height: 262px;
@@ -2350,12 +2361,54 @@
             }
         }
         .title {
+            display: block;
             font-size: 22px;
             font-weight: 600;
             margin-top: $com-spacing-3;
+            @include transition(all 0.5s ease-in-out 0s);
+            &:hover {
+                color: $red;
+            }
         }
         p {
             margin-top: $com-spacing-1;
+        }
+        .more {
+            display: inline-flex;
+            position: relative;
+            color: $red;
+            margin-top: $com-spacing-2;
+            &::after {
+                content: "";
+                position: absolute;
+                left: $zero;
+                bottom: -4px;
+                width: 20%;
+                height: 2px;
+                background: $red;
+                @include transition(all 0.5s ease-in-out 0s);
+                @media (max-width: 999px) {
+                    display: none;
+                }
+            }
+            &:hover {
+                &::after {
+                    width: $fullwidth;
+                }
+            }
+        }
+    }
+}
+
+.cusempowering {
+    background: none;
+    .item {
+        padding: $zero;
+        box-shadow: none !important;
+        .title {
+            &:hover {
+                color: $blak;
+            }
         }
     }
 }
@@ -2414,20 +2467,6 @@
                 color: #a9a9a9;
             }
         }
-    }
-}
-
-.cusbusinesses {
-    background: none;
-    .target-card {
-        background: #e836461c !important;
-    }
-}
-
-.cusempowering {
-    background: none;
-    .item {
-        padding: $zero;
     }
 }
 
