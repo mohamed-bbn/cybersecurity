@@ -1,0 +1,539 @@
+@mixin reset {
+    direction: $direction;
+    text-align: start;
+    margin: $zero;
+    padding: $zero;
+    border: $zero;
+    text-decoration: $none;
+    list-style: $none;
+    color: $colortext;
+    font: normal 400 16px/28px "Poppins", sans-serif;
+}
+
+@mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
+    position: $position;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+@mixin overlay {
+    content: '';
+    @include position(absolute, $top: 0, $left: 0, $right: auto, $bottom: auto);
+    width: $fullwidth;
+    height: $fullwidth;
+}
+
+@mixin section {
+    position: relative;
+    width: $fullwidth;
+    padding: $com-spacing-8 $zero;
+    overflow: hidden;
+    @media (max-width: 999px) {
+        padding: $com-spacing-6 $zero;
+    }
+}
+
+@mixin flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin transition($transition...) {
+    -moz-transition: $transition;
+    -o-transition: $transition;
+    -webkit-transition: $transition;
+    transition: $transition;
+}
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    border-radius: $radius;
+    background-clip: padding-box;
+}
+
+@mixin rotate($degrees) {
+    -webkit-transform: rotate($degrees);
+    -moz-transform: rotate($degrees);
+    -ms-transform: rotate($degrees);
+    -o-transform: rotate($degrees);
+    transform: rotate($degrees);
+}
+
+@mixin scale($degscale) {
+    -webkit-transform: scale($degscale);
+    -moz-transform: scale($degscale);
+    -ms-transform: scale($degscale);
+    -o-transform: scale($degscale);
+    transform: scale($degscale);
+}
+
+@mixin bottom {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    color: $white;
+    outline: $none;
+    outline-style: $none;
+    border: $zero;
+    gap: $com-spacing-1;
+    text-align: center;
+    background: $red;
+    border-radius: 60px;
+    font-weight: 500;
+    white-space: nowrap;
+    text-transform: capitalize;
+    @include transition(all 0.5s ease-in-out 0s);
+    cursor: pointer;
+    padding: $com-spacing-2 $com-spacing-6;
+    @media (max-width: 999px) {}
+    &::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(0deg, transparent, transparent 30%, #ffffff36);
+        transform: rotate(-45deg);
+        transition: all 0.5s ease;
+        opacity: 0;
+    }
+    &:hover {
+        // transform: scale(1.05);
+        box-shadow: 0 0 20px #e8364661;
+        &::before {
+            opacity: 1;
+            transform: rotate(-45deg) translateY(140%);
+        }
+    }
+    &:focus {
+        outline: $none;
+        outline-style: $none;
+        border: $zero;
+    }
+    svg {
+        min-width: 22px;
+        max-width: 22px;
+        @include transition(all 0.5s ease-in-out 0s);
+        @media (max-width: 999px) {
+            min-width: 18px;
+            max-width: 18px;
+        }
+    }
+}
+
+@mixin prefixer ($property, $value, $prefixes: ()) {
+    @each $prefix in $prefixes {
+        #{'-' + $prefix + '-' + $property}: $value;
+    }
+    #{$property}: $value;
+}
+
+@mixin keyFrame ($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+
+@mixin social {
+    @include flex;
+    gap: $com-spacing-4;
+    direction: ltr;
+    a {
+        position: relative;
+        @include transition(all 0.5s ease-in-out 0s);
+        svg {
+            fill: $white;
+            width: 20px;
+            height: 20px;
+            @include transition(all 0.5s ease-in-out 0s);
+        }
+        &:hover {
+            opacity: 0.7;
+        }
+        @each $type in $social {
+            &.icon-#{nth($type, 1)} {}
+        }
+    }
+}
+
+@mixin social-shear {
+    display: flex;
+    direction: ltr;
+    a {
+        @include flex;
+        width: 38px;
+        height: 38px;
+        margin: $zero $com-spacing-1;
+        @include transition(all 0.5s ease-in-out 0s);
+        svg {
+            fill: $white;
+            width: 22px;
+            height: 22px;
+            @include transition(all 0.5s ease-in-out 0s);
+        }
+        @each $type in $social {
+            &.icon-#{nth($type, 1)} {
+                background: nth($type, 2);
+                &:hover {
+                    background: $ofwhite;
+                    svg {
+                        fill: nth($type, 2);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin input {
+    height: 48px;
+    text-transform: $none;
+    @include border-radius(8px);
+    @include transition(all 0.5s ease-in-out 0s);
+    &:focus,
+    &:hover,
+    &:focus-visible {
+        border: 1px solid $dark;
+        outline: 0;
+        outline-style: $none;
+        box-shadow: none;
+    }
+}
+
+@mixin title {
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 150%;
+    color: $blak;
+    text-transform: capitalize;
+    // overflow: hidden;
+    @media (max-width: 999px) {
+        font-size: 24px;
+        font-weight: 600;
+        br {
+            display: none;
+        }
+    }
+}
+
+@mixin hyprlink {
+    display: block;
+    @include position(relative);
+    color: $white;
+    font-size: 14px;
+    text-transform: capitalize;
+    @include transition(all 0.5s ease-in-out 0s);
+    &:hover {
+        color: $red;
+    }
+}
+
+@mixin map-back {
+    @include section;
+    height: 480px;
+    padding: $zero;
+    background: $dark;
+    @include flex;
+    @media (max-width: 999px) {
+        height: 164px;
+    }
+    img {
+        position: absolute;
+        left: $zero;
+        top: $zero;
+        width: $fullwidth;
+        height: $fullwidth;
+        object-fit: cover;
+        object-position: top;
+    }
+    &:before {
+        @include overlay;
+        background: linear-gradient(to left, #0d264800, #0d26484d);
+        z-index: 1;
+        @media (max-width: 999px) {
+            background: linear-gradient(to bottom, #0d264800, #0d2648);
+        }
+    }
+    .container {
+        z-index: 10;
+        margin-top: 95px;
+        @media (max-width: 999px) {
+            margin: $zero
+        }
+    }
+    .title {
+        color: $white;
+        text-align: center;
+        @media (max-width: 999px) {}
+    }
+    p {
+        color: #b7b7b7;
+    }
+}
+
+@mixin maplink {
+    @include flex;
+    text-transform: capitalize;
+    margin-top: $com-spacing-2;
+    li {
+        display: $inline;
+        color: #b3b3b3;
+        margin-inline-end: $com-spacing-3;
+        @include transition(all 0.5s ease-in-out 0s);
+        &:last-child {
+            margin: $zero;
+        }
+        a {
+            color: $white;
+            position: relative;
+            padding-inline-end: $com-spacing-3;
+            @include transition(all 0.5s ease-in-out 0s);
+            &:hover {
+                color: $red;
+            }
+            &:before {
+                @include position(absolute, $top: -3px, $right: -2px);
+                content: "|";
+                display: $inline;
+                color: $white;
+            }
+        }
+    }
+}
+
+@mixin styleslider {
+    @include position(relative);
+    direction: ltr;
+    .slick-list {
+        @include position(relative);
+        display: $block;
+        overflow: hidden;
+        outline: $none;
+        margin: $zero -8px;
+        .slick-track {
+            @include position(relative, $top: 0, $left: auto, $right: auto, $bottom: auto);
+            display: $block;
+            overflow: hidden;
+            &:after,
+            &:before {
+                display: table;
+                content: '';
+            }
+        } /// End .slick-track
+    } /// End .Slick-list
+    .slick-prev,
+    .slick-next {
+        @include position(absolute, $top: -50px);
+        cursor: pointer;
+        border: $zero;
+        padding: $zero;
+        outline: $none;
+        font-size: $zero;
+        background: $none;
+        @include transition(all 0.5s ease-in-out 0s);
+        svg {
+            width: 18px;
+            height: 18px;
+            fill: $blue;
+            @include transition(all 0.5s ease-in-out 0s);
+        }
+        // &:hover {
+        //     svg {
+        //         fill: $blue;
+        //     }
+        // }
+    }
+    .slick-next {
+        left: 30px;
+    }
+    .slick-prev {
+        left: $zero;
+    }
+    .slick-dots {
+        @include flex;
+        margin-top: $com-spacing-6;
+        li {
+            @include position(relative);
+            display: $inline;
+            margin: $zero $com-spacing-1;
+            padding: $zero;
+            cursor: pointer;
+            width: 16px;
+            height: 6px;
+            border-radius: 5px;
+            button {
+                font-size: $zero;
+                line-height: $zero;
+                display: $block;
+                width: $fullwidth;
+                height: $fullwidth;
+                border: $zero;
+                outline: $none;
+                background: #e836463d;
+                padding: $zero;
+                border-radius: 5px;
+            }
+        }
+        li.slick-active {
+            background: $red;
+            button {
+                background: $none;
+            }
+        }
+    }
+}
+
+@mixin check-box {
+    position: relative;
+    cursor: pointer;
+    font-weight: 300;
+    padding-right: 22px;
+    input[type="checkbox"],
+    input[type="radio"] {
+        @include position(absolute, $left: 9000px);
+    }
+    input[type="checkbox"]+.label-text:before,
+    input[type="radio"]+.label-text:before {
+        content: ' ';
+        border: 1px solid #D9D9D9;
+        background: #D9D9D9;
+        width: 18px;
+        height: 18px;
+        position: absolute;
+        z-index: 1;
+        top: 7px;
+        right: 0;
+        border-radius: 4px;
+    }
+    input[type="radio"]+.label-text:before {
+        @include border-radius(50%);
+    }
+    input[type="radio"]:checked+.label-text:before {
+        background: $blue;
+        box-shadow: inset 0 0 0px 4px $white;
+    }
+    input[type="checkbox"]:checked+.label-text:before {
+        background: $blue url(../images/tick.svg) no-repeat center center;
+        border: 1px solid $blue;
+    }
+    span.label-text {
+        font-weight: 300;
+        color: $blak;
+        @include transition(all 0.5s ease-in-out 0s);
+        @media (max-width: 991px) {}
+    }
+    // @keyframes effect {
+    //     0% {
+    //         transform: scale(0);
+    //     }
+    //     25% {
+    //         transform: scale(1.3);
+    //     }
+    //     75% {
+    //         transform: scale(1.4);
+    //     }
+    //     100% {
+    //         transform: scale(1);
+    //     }
+    // }
+}
+
+@mixin slidercarousel {
+    height: $fullwidth;
+    overflow: hidden;
+    &:hover {
+        .carousel-control-next {
+            right: $com-spacing-6;
+        }
+        .carousel-control-prev {
+            left: $com-spacing-6;
+        }
+    }
+    .carousel-inner {
+        height: $fullwidth;
+    }
+    .carousel-item {
+        overflow: hidden;
+        height: $fullwidth;
+        background: $red;
+        &::after {
+            @include overlay;
+            background: linear-gradient(to left, #0d264800, #0d2648);
+            @media (max-width: 999px) {
+                background: linear-gradient(to bottom, #0d264800, #0d2648);
+            }
+        }
+        img {
+            width: $fullwidth;
+            height: $fullwidth;
+            object-fit: cover;
+        }
+    }
+    .carousel-control-next,
+    .carousel-control-prev {
+        width: 48px;
+        height: 48px;
+        top: 50%;
+        background: #1b355794;
+        opacity: 1;
+        margin-top: -24px;
+        border-radius: 50%;
+        @include transition(all 0.5s ease-in-out 0s);
+        @media (max-width: 999px) {
+            display: $none;
+        }
+        svg {
+            width: 18px;
+            height: 18px;
+            fill: $white;
+            @include transition(all 0.5s ease-in-out 0s);
+        }
+        &:hover {
+            background: $red;
+            svg {}
+        }
+    }
+    .carousel-control-next {
+        right: -90px;
+    }
+    .carousel-control-prev {
+        left: -90px;
+        svg {
+            @include rotate(180deg);
+        }
+    }
+    .carousel-indicators {
+        padding: $zero;
+        margin: $zero;
+        gap: $com-spacing-2;
+        margin-bottom: $com-spacing-6;
+        button {
+            box-sizing: inherit;
+            width: 16px;
+            height: 16px;
+            background: $white;
+            border-radius: 50%;
+            margin: $zero;
+            border: $zero;
+            opacity: 1;
+            @include transition(all 0.5s ease-in-out 0s);
+            &.active {
+                background: $red;
+                width: 44px;
+                border-radius: 8px;
+            }
+        }
+    }
+}

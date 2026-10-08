@@ -1,0 +1,203 @@
+.slider-item {
+    padding: $zero !important;
+    height: 100vh;
+    overflow: hidden;
+    @media (max-width: 999px) {
+        height: 80vh;
+    }
+    .carousel {
+        @include slidercarousel;
+    }
+    .container {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        left: $zero;
+        right: $zero;
+        top: $zero;
+        height: $fullwidth;
+        z-index: 1;
+    }
+    .contant {
+        max-width: 50%;
+        @media (max-width: 999px) {
+            max-width: $fullwidth;
+            text-align: center;
+        }
+        span {
+            display: block;
+            color: $red;
+            margin-bottom: $com-spacing-3;
+            @media (max-width: 999px) {
+                display: none;
+            }
+        }
+        .title {
+            color: $white;
+            margin-bottom: $com-spacing-3;
+            @media (max-width: 999px) {
+                text-align: center;
+            }
+        }
+        p {
+            color: #ffffffe0;
+            @media (max-width: 999px) {
+                display: none;
+            }
+        }
+        .bottom {
+            margin-top: $com-spacing-5;
+        }
+    }
+}
+
+.site-slider {
+    // height: 100vh;
+    background: $dark;
+    padding: $zero !important;
+    @media (max-width: 999px) {
+        padding-bottom: $com-spacing-8 !important;
+    }
+    &::before {
+        @include overlay;
+        background: url(../images/slider/banner-bg.png) no-repeat center center/cover;
+        animation: FocuS 1s linear 1s infinite;
+        @keyframes FocuS {
+            0% {
+                opacity: 0;
+            }
+            75% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+    }
+    .container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        gap: $com-spacing-6;
+        // height: $fullwidth;
+        @media (max-width: 999px) {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+    .contant {
+        @media (max-width: 999px) {
+            max-width: $fullwidth;
+            text-align: center;
+        }
+        .title {
+            color: $white;
+            margin-bottom: $com-spacing-3;
+            @media (max-width: 999px) {
+                text-align: center;
+            }
+        }
+        p {
+            color: #ffffffe0;
+            @media (max-width: 999px) {
+                display: none;
+            }
+        }
+        .bottom {
+            margin-top: $com-spacing-5;
+        }
+    }
+    .photo {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        height: $fullwidth;
+        // position: relative;
+        // top: -185px;
+        @media (max-width: 999px) {
+            height: $auto;
+            order: -1;
+        }
+        img {
+            max-width: $fullwidth;
+            max-height: $fullwidth;
+            @media (max-width: 999px) {
+                max-height: 458px;
+            }
+            @media (max-width:550px) {
+                max-height: 258px;
+            }
+        }
+    }
+}
+
+.custslider {
+    @media (max-width: 999px) {
+        height: 50vh;
+    }
+    .container {
+        margin-top: $com-spacing-7;
+        @media (max-width: 999px) {
+            margin-top: $zero;
+            justify-content: center;
+        }
+    }
+}
+
+.siteslider {
+    // @include flex;
+    // height: 100vh;
+    // background: $dark;
+    // @media (max-width: 999px) {
+    //     height: $auto;
+    // }
+    .inner {
+        position: relative;
+        display: grid;
+        align-items: center;
+        grid-template-columns: repeat(2, 1fr);
+        gap: $com-spacing-8;
+        background: $dark;
+        border-radius: 20px;
+        overflow: hidden;
+        &::before {
+            @include overlay;
+            background: url(../images/governance.jpg) fixed no-repeat center center/cover;
+            opacity: 0.1;
+        }
+        &::after {
+            @include overlay;
+            background: #0d264845;
+        }
+        @media (max-width: 999px) {
+            grid-template-columns: repeat(1, 1fr);
+            margin: $zero;
+        }
+    }
+    .container {}
+    .item {
+        position: relative;
+        z-index: 10;
+        padding: $com-spacing-8;
+        @media (max-width: 999px) {
+            text-align: center;
+        }
+        .title {
+            color: $white;
+            margin-bottom: $com-spacing-4;
+            @media (max-width: 999px) {
+                text-align: center;
+            }
+        }
+        p {
+            color: #ffffffe0;
+            margin-bottom: $com-spacing-4;
+        }
+        img {
+            max-width: $fullwidth;
+            max-height: 548px;
+        }
+    }
+    .photo {
+        @include flex;
+    }
+}
